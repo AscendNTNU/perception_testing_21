@@ -1,0 +1,5 @@
+<launch>
+	<node pkg="rosbag" type="record" name="my_rosbag" output="screen" args="-o '/mnt/ssd/testflight' -a"/>
+	<include file="realsense.launch" />
+	<include file="apm2.launch" />
+</launch>
