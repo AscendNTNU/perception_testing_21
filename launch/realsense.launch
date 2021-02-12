@@ -26,7 +26,7 @@
       <arg name="enable_accel"        value="true"/>
       <arg name="enable_pose"         value="true"/>
 
-      <arg name="enable_sync"           value="false"/>
+      <arg name="enable_sync"           value="true"/>
 
       <arg name="linear_accel_cov"      value="0.01"/>
       <arg name="unite_imu_method"      value=""/>
