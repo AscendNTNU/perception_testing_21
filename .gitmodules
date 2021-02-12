@@ -1,0 +1,3 @@
+[submodule "distance_tracking"]
+	path = distance_tracking
+	url = git@github.com:AscendNTNU/distance_tracking.git
