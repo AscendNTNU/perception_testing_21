@@ -4,3 +4,6 @@
 [submodule "src/distance_tracking"]
 	path = src/distance_tracking
 	url = git@github.com:AscendNTNU/distance_tracking.git
+[submodule "ascend_msgs"]
+	path = ascend_msgs
+	url = git@github.com:AscendNTNU/ascend_msgs.git
