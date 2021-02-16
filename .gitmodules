@@ -1,9 +1,6 @@
 [submodule "src/darknet"]
 	path = src/darknet
 	url = git@github.com:AscendNTNU/darknet.git
-[submodule "src/distance_tracking"]
-	path = src/distance_tracking
-	url = git@github.com:AscendNTNU/distance_tracking.git
 [submodule "src/ascend_msgs"]
 	path = src/ascend_msgs
 	url = git@github.com:AscendNTNU/ascend_msgs.git
