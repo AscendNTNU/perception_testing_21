@@ -23,7 +23,8 @@ jobs:
           ssh-key: ${{ secrets.CLOSE_TRACKING_PULL_KEY }}
           submodules: true 
         
-        run: echo "-DENABLE_CUDA=OFF" >> $GITHUB_ENV
+      - run: echo "-DENABLE_CUDA=OFF" >> $GITHUB_ENV
+      
       - uses: actions/checkout@v2
         with:
           repository: AscendNTNU/darknet 
