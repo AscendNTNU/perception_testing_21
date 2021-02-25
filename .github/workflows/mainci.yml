@@ -1,4 +1,4 @@
-name: CI
+name: Perception_Testing_CI
 
 on: [push, pull_request]
 
