@@ -28,7 +28,7 @@ jobs:
           submodules: true 
         
       - run: |
-            echo "DENABLE_CUDA=OFF" >> $GITHUB_ENV
+            echo "DENABLE_CUDA=off" >> $GITHUB_ENV
       
       - uses: actions/checkout@v2
         with:
