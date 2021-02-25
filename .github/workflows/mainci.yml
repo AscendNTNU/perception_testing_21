@@ -27,8 +27,7 @@ jobs:
           ssh-key: ${{ secrets.CLOSE_TRACKING_PULL_KEY }}
           submodules: true 
         
-      - run: |
-            echo "DENABLE_CUDA=off" >> $GITHUB_ENV
+      - run: echo "ENABLE_CUDA=off" >> $GITHUB_ENV
       
       - uses: actions/checkout@v2
         with:
