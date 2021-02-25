@@ -9,7 +9,11 @@ jobs:
         env:
           - {ROS_DISTRO: melodic, ROS_REPO: testing}
           - {ROS_DISTRO: melodic, ROS_REPO: main}
+    env:
+      CCACHE_DIR: /github/home/.ccache
+
     runs-on: ubuntu-18.04
+
     steps:
       - uses: actions/checkout@v2
         with:
@@ -23,13 +27,19 @@ jobs:
           ssh-key: ${{ secrets.CLOSE_TRACKING_PULL_KEY }}
           submodules: true 
         
-      - run: echo "DENABLE_CUDA=OFF" >> $GITHUB_ENV
+      - run: |
+            echo "DENABLE_CUDA=OFF" >> $GITHUB_ENV
       
       - uses: actions/checkout@v2
         with:
           repository: AscendNTNU/darknet 
           ssh-key: ${{ secrets.DARKNET_PULL_KEY }}
           submodules: true 
+      
+      - uses: actions/cache@v2
+        with:
+          path: ${{ env.CCACHE_DIR }}
+          key: ccache-${{ matrix.env.ROS_DISTRO }}-${{ matrix.env.ROS_REPO }}
 
       - uses: 'ros-industrial/industrial_ci@master'
         env: ${{matrix.env}}
