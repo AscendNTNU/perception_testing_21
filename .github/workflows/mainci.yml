@@ -11,7 +11,7 @@ jobs:
           - {ROS_DISTRO: melodic, ROS_REPO: main}
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
         env:
           repo-token: ${{ secrets.ACCESS_TOKEN }}
         with: 
