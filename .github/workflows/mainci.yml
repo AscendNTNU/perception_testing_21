@@ -1,4 +1,4 @@
-name: Perception_Testing_CI
+name: PerceptionCI
 
 on: [push, pull_request]
 
@@ -22,12 +22,14 @@ jobs:
           repository: AscendNTNU/close_module_tracking
           ssh-key: ${{ secrets.CLOSE_TRACKING_PULL_KEY }}
           submodules: true 
-          
+        
+        run: echo "-DENABLE_CUDA=OFF" >> $GITHUB_ENV
       - uses: actions/checkout@v2
         with:
           repository: AscendNTNU/darknet 
           ssh-key: ${{ secrets.DARKNET_PULL_KEY }}
           submodules: true 
+
         
       - uses: 'ros-industrial/industrial_ci@master'
         env: ${{matrix.env}}
