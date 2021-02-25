@@ -11,11 +11,12 @@ jobs:
         env:
           - {ROS_DISTRO: melodic, ROS_REPO: testing}
           - {ROS_DISTRO: melodic, ROS_REPO: main}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
-        with:
+        env:
+          repo-token: ${{ secrets.ACCESS_TOKEN }}
+        with: 
           submodules: recursive
-          token: ${{ secrets.ACCESS_TOKEN }}
       - uses: 'ros-industrial/industrial_ci@master'
         env: ${{matrix.env}}
