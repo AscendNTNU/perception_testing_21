@@ -1,12 +1,12 @@
 [submodule "src/darknet"]
 	path = src/darknet
-	url = git@github.com:AscendNTNU/darknet.git
+	url = https://github.com/AscendNTNU/darknet.git
 [submodule "src/ascend_msgs"]
 	path = src/ascend_msgs
-	url = git@github.com:AscendNTNU/ascend_msgs.git
+	url = https://github.com/AscendNTNU/ascend_msgs.git
 [submodule "src/object_detector"]
 	path = src/object_detector
-	url = git@github.com:AscendNTNU/object_detector.git
+	url = https://github.com/AscendNTNU/object_detector.git
 [submodule "src/close_module_tracking"]
 	path = src/close_module_tracking
-	url = git@github.com:AscendNTNU/close_module_tracking.git
+	url = https://github.com/AscendNTNU/close_module_tracking.git
