@@ -23,7 +23,7 @@ jobs:
           ssh-key: ${{ secrets.CLOSE_TRACKING_PULL_KEY }}
           submodules: true 
         
-      - run: echo "-DENABLE_CUDA=OFF" >> $GITHUB_ENV
+      - run: echo "DENABLE_CUDA=OFF" >> $GITHUB_ENV
       
       - uses: actions/checkout@v2
         with:
@@ -31,6 +31,5 @@ jobs:
           ssh-key: ${{ secrets.DARKNET_PULL_KEY }}
           submodules: true 
 
-        
       - uses: 'ros-industrial/industrial_ci@master'
         env: ${{matrix.env}}
