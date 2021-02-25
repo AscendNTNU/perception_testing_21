@@ -15,6 +15,6 @@ jobs:
         with:
           ssh-key: ${{ secrets.SUBMODULE_CONTENT_PULL_KEY }}
           submodules: recursive
-          
+
       - uses: 'ros-industrial/industrial_ci@master'
         env: ${{matrix.env}}
