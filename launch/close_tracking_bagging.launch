@@ -1,8 +1,8 @@
 <launch>
     <arg name="server" default="192.168.0.10"/>
-    <arg name="PI" default="3.141592653589793238462643383">
 
-    <include file="$(find perception_testing_21)/launch/realsense.launch"/>
+
+	<include file="$(dirname)/realsense.launch"/>
 
     <include file="$(find object_detector)/launch/object_detector.launch"/>
 
@@ -34,6 +34,6 @@
         <param name="timestamping_system" value="ros"/>
     </node>
 
-    <node pkg="tf2_ros" type="static_transform_publisher" name="link1_broadcaster" args="0 0 0.055 -0.5 0.5 0.5 0.5 d455_color_optical_frame laser" />
+    <node pkg="tf2_ros" type="static_transform_publisher" name="link1_broadcaster" args="0 0 0.055 -0.5 -0.5 -0.5 0.5 d455_color_optical_frame laser"/>
 
 </launch>

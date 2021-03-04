@@ -4,36 +4,6 @@
   <arg name="topic_odom_in"             default="odom_in"/>
   <arg name="calib_odom_file"           default=""/>
 
-  <group ns="t265">
-    <include file="$(find realsense2_camera)/launch/includes/nodelet.launch.xml">
-      <arg name="device_type"           value="t265"/>
-      <arg name="serial_no"             value="929122110366"/>
-      <arg name="tf_prefix"         		value="t265"/>
-      <arg name="initial_reset"         value="$(arg initial_reset)"/>
-      <arg name="topic_odom_in"         value="$(arg topic_odom_in)"/>
-      <arg name="calib_odom_file"       value="$(arg calib_odom_file)"/>
-
-      <arg name="fisheye_width"       value="848"/> 
-      <arg name="fisheye_height"      value="800"/>
-      <arg name="enable_fisheye1"     value="false"/>
-      <arg name="enable_fisheye2"     value="false"/>
-
-      <arg name="fisheye_fps"         value="30"/>
-
-      <arg name="gyro_fps"            value="200"/>
-      <arg name="accel_fps"           value="62"/>
-      <arg name="enable_gyro"         value="true"/>
-      <arg name="enable_accel"        value="true"/>
-      <arg name="enable_pose"         value="true"/>
-
-      <arg name="enable_sync"           value="true"/>
-
-      <arg name="linear_accel_cov"      value="0.01"/>
-      <arg name="unite_imu_method"      value=""/>
-
-      <arg name="publish_odom_tf"     default="true"/>
-    </include>
-  </group>
     <group ns="d455">
     <include file="$(find realsense2_camera)/launch/includes/nodelet.launch.xml">
       <!-- Common parameters -->
