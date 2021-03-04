@@ -14,9 +14,11 @@ jobs:
       CCACHE_DIR: /github/home/.ccache
     
     runs-on: [self-hosted, cml, gpu]
-    
+
     steps: 
-      - run: 
+      - run: |
+          sudo ./svc.sh stop
+          sudo ./svc.sh start 
           git clone https://github.com/ros-industrial/industrial_ci.git
       
       - uses: actions/checkout@v2
