@@ -1,0 +1,16 @@
+<launch>
+    <include file="$(find perception_testing_21)/launch/realsense.launch"/>
+
+    <include file="$(find object_detector)/launch/object_detector.launch"/>
+
+    <node ns="hokuyo" pkg="urg_node" type="urg_node" name="hukoyo">
+        <param name="ip_address" value="192.168.0.10"/>
+        <param name="publish_intensity" value="true"/>
+        <param name="publish_multiecho" value="false"/>
+        <param name="angle_min" value="-1.5707963"/>
+        <param name="angle_max" value="1.5707963"/>
+    </node>
+
+    <node pkg="rosbag" type="record" name="rosbag_record_diag" args="record -o -a"/> 
+
+</launch>
