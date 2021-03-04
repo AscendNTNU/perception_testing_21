@@ -1,0 +1,50 @@
+name: cml
+
+on: [push, pull_request]
+
+jobs: 
+  industrial_ci: 
+    strategy: 
+      matrix:
+        env:
+          - {ROS_DISTRO: melodic, ROS_REPO: testing}
+          - {ROS_DISTRO: melodic, ROS_REPO: main}
+    env:
+      CCACHE_DIR: /github/home/.ccache
+    
+    runs-on: ubuntu-18.04
+    container: docker://dvcorg/cml:latest
+
+    steps: 
+      - uses: actions/checkout@v2
+        with: 
+          repository: AscendNTNU/object_detector
+          ssh-key: ${{ secrets.SUBMODULE_CONTENT_PULL_KEY }}
+
+      - uses: actions/checkout@v2 
+        with: 
+          repository: AscendNTNU/close_module_tracking
+          ssh-key: ${{ secrets.CLOSE_TRACKING_PULL_KEY }}
+    
+      - uses: actions/checkout@v2
+        with: 
+          repository: AscendNTNU/darknet
+          ssh-key: ${{ secrets.DARKNET_PULL_KEY }}
+
+      - uses: actions/cache@v2
+        with:
+          path: ${{ env.CCACHE_DIR }}
+          key: ccache-${{ matrix.env.ROS_DISTRO }}-${{ matrix.env.ROS_REPO }}
+
+      - uses: 'ros-industrial/industrial_ci@master'
+        env: ${{matrix.env}}
+
+
+
+
+
+
+
+
+
+
