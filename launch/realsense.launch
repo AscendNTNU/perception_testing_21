@@ -1,9 +1,10 @@
 <launch>
+  <rosparam> /d455/stereo_module/emitter_enabled: 0 </rosparam>
+    
   <arg name="initial_reset"             default="true"/>
   <arg name="clip_distance"             default="-2"/>
   <arg name="topic_odom_in"             default="odom_in"/>
   <arg name="calib_odom_file"           default=""/>
-
     <group ns="d455">
     <include file="$(find realsense2_camera)/launch/includes/nodelet.launch.xml">
       <!-- Common parameters -->
@@ -15,32 +16,32 @@
       <arg name="tf_prefix"             value="d455"/>
 
       <!-- Depth data -->
-      <arg name="depth_width"         value="1280"/>
-      <arg name="depth_height"        value="720"/>
-      <arg name="enable_depth"        value="true"/>
-      <arg name="enable_sync"         value="true"/>
-      <arg name="align_depth"         value="true"/>
-      <arg name="enable_pointcloud"   value="true"/>
-      <arg name="depth_fps"           value="30"/>
+      <arg name="depth_width"          value="848"/>
+      <arg name="depth_height"         value="480"/>
+      <arg name="enable_depth"         value="true"/>
+      <arg name="enable_sync"          value="true"/>
+      <arg name="align_depth"          value="false"/>
+      <arg name="enable_pointcloud"    value="false"/>
+      <arg name="depth_fps"            value="60"/>
 
       <!-- Infrared image -->
-      <arg name="infra_width"         value="640"/>
+      <arg name="infra_width"         value="848"/>
       <arg name="infra_height"        value="480"/>
       <arg name="enable_infra1"       value="false"/>
       <arg name="enable_infra2"       value="false"/>
-      <arg name="infra_fps"           value="30"/>
+      <arg name="infra_fps"           value="60"/>
 
       <!-- Color image -->
-      <arg name="color_width"         value="1280"/>
-      <arg name="color_height"        value="720"/>
+      <arg name="color_width"         value="848"/>
+      <arg name="color_height"        value="480"/>
       <arg name="enable_color"        value="true"/>
-      <arg name="color_fps"           value="30"/>
+      <arg name="color_fps"           value="60"/>
 
       <!-- Fisheye image -->
-      <arg name="fisheye_width"       value="640"/>
+      <arg name="fisheye_width"       value="848"/>
       <arg name="fisheye_height"      value="480"/>
       <arg name="enable_fisheye"      value="false"/>
-      <arg name="fisheye_fps"         value="30"/>
+      <arg name="fisheye_fps"         value="60"/>
 
       <!-- IMU -->
       <arg name="gyro_fps"            value="400"/>
@@ -50,5 +51,4 @@
 
     </include>
   </group>
-  <!-- <node pkg="tf" type="static_transform_publisher" name="t265_to_d455" args="0 0 0 0 0 0 /t265_link /$(arg d455_link 100"/> -->
 </launch>
