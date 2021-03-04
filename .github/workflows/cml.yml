@@ -12,12 +12,13 @@ jobs:
     env:
       CCACHE_DIR: /github/home/.ccache
     
-    runs-on: ubuntu-18.04
+    runs-on: [self-hosted, cml, gpu]
     container: docker://dvcorg/cml:latest
 
-    run: git clone https://github.com/ros-industrial/industrial_ci.git
-
     steps: 
+      - run: 
+          git clone https://github.com/ros-industrial/industrial_ci.git
+      
       - uses: actions/checkout@v2
         with: 
           repository: AscendNTNU/object_detector
