@@ -1,7 +1,6 @@
 <launch>
     <arg name="server" default="192.168.0.10"/>
 
-
 	<include file="$(dirname)/realsense.launch"/>
 
     <include file="$(find object_detector)/launch/object_detector.launch"/>
