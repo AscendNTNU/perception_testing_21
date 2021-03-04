@@ -15,6 +15,9 @@ jobs:
     runs-on: ubuntu-18.04
     container: docker://dvcorg/cml:latest
 
+    run: 
+      git clone https://github.com/ros-industrial/industrial_ci.git
+
     steps: 
       - uses: actions/checkout@v2
         with: 

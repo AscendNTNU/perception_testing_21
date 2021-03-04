@@ -19,19 +19,16 @@ jobs:
         with:
           repository: AscendNTNU/object_detector
           ssh-key: ${{ secrets.SUBMODULE_CONTENT_PULL_KEY }}
-          submodules: true 
       
       - uses: actions/checkout@v2
         with:  
           repository: AscendNTNU/close_module_tracking
           ssh-key: ${{ secrets.CLOSE_TRACKING_PULL_KEY }}
-          submodules: true 
               
       - uses: actions/checkout@v2
         with:
           repository: AscendNTNU/darknet 
           ssh-key: ${{ secrets.DARKNET_PULL_KEY }}
-          submodules: true 
       
       - uses: actions/cache@v2
         with:
