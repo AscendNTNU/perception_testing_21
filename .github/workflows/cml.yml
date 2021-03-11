@@ -1,6 +1,5 @@
 name: cml
 
-# Test
 on: [push, pull_request]
 
 jobs: 
@@ -17,9 +16,9 @@ jobs:
 
     steps: 
       - run: |
-          sudo ./svc.sh stop
-          sudo ./svc.sh start 
           git clone https://github.com/ros-industrial/industrial_ci.git
+          
+
       
       - uses: actions/checkout@v2
         with: 
