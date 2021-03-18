@@ -7,19 +7,15 @@ jobs:
     strategy: 
       matrix:
         env:
-          - {ROS_DISTRO: melodic, ROS_REPO: testing}
-          - {ROS_DISTRO: melodic, ROS_REPO: main}
+          - {DOCKER_PULL: false, DOCKER_IMAGE: ~, ROS_REPO: testing}
+          - {DOCKER_PULL: false, DOCKER_IMAGE: ~, ROS_REPO: main}
+
     env:
       CCACHE_DIR: /github/home/.ccache
     
     runs-on: [self-hosted, cml, gpu]
 
     steps: 
-      - run: |
-          git clone https://github.com/ros-industrial/industrial_ci.git
-          
-
-      
       - uses: actions/checkout@v2
         with: 
           repository: AscendNTNU/object_detector
@@ -34,11 +30,6 @@ jobs:
         with: 
           repository: AscendNTNU/darknet
           ssh-key: ${{ secrets.DARKNET_PULL_KEY }}
-
-      - uses: actions/cache@v2
-        with:
-          path: ${{ env.CCACHE_DIR }}
-          key: ccache-${{ matrix.env.ROS_DISTRO }}-${{ matrix.env.ROS_REPO }}
 
       - uses: 'ros-industrial/industrial_ci@master'
         env: ${{matrix.env}}
