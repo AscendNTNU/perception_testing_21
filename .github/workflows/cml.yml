@@ -9,7 +9,7 @@ jobs:
         env:
           # Use custom Docker image 
           # TODO: Add UPSTREAM_WORKSPACE, DOCKER_PULL: true if public image, remove ROS_REPO? 
-          - {BUILDER: catkin_make, CMAKE_ARGS: -DCUDA_CUDA_LIBRARY=/usr/local/cuda-11.2/targets/x86_64-linux/lib/libcudart.so.11.2.152, DOCKER_IMAGE: luniaria/perceptionworker, DOCKER_RUN_OPTS: --gpus all}
+          - {BUILDER: catkin_make, CMAKE_ARGS: -DCUDA_CUDA_LIBRARY=/usr/local/cuda-11.2/targets/x86_64-linux/lib/libcudart.so.11.0, DOCKER_IMAGE: luniaria/perceptionworker, DOCKER_RUN_OPTS: --gpus all}
 
     env:
       CCACHE_DIR: /github/home/.ccache
