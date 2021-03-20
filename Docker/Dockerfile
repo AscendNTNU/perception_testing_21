@@ -38,32 +38,32 @@ ARG LIBNVINFER_MAJOR=6
 ARG CUBLAS=10.2.1.243-1
 ARG CUBLAS_MAJOR=10
 
-SHELL ["/bin/bash", "-c"]
+# SHELL ["/bin/bash", "-c"]
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    cuda-command-line-tools-${CUDA/./-} \
-    libcublas${CUBLAS_MAJOR}=${CUBLAS} \
-    cuda-nvrtc-${CUDA/./-} \
-    cuda-cufft-${CUDA/./-} \
-    cuda-curand-${CUDA/./-} \
-    cuda-cusolver-${CUDA/./-} \
-    cuda-cusparse-${CUDA/./-} \
-    libcudnn${CUDNN_MAJOR}=${CUDNN}+cuda${CUDA} \
-    libfreetype6-dev \
-    libhdf5-serial-dev \
-    libzmq3-dev && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+# RUN apt-get update && apt-get install -y --no-install-recommends \
+#     cuda-command-line-tools-${CUDA/./-} \
+#     libcublas${CUBLAS_MAJOR}=${CUBLAS} \
+#     cuda-nvrtc-${CUDA/./-} \
+#     cuda-cufft-${CUDA/./-} \
+#     cuda-curand-${CUDA/./-} \
+#     cuda-cusolver-${CUDA/./-} \
+#     cuda-cusparse-${CUDA/./-} \
+#     libcudnn${CUDNN_MAJOR}=${CUDNN}+cuda${CUDA} \
+#     libfreetype6-dev \
+#     libhdf5-serial-dev \
+#     libzmq3-dev && \
+#     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-ENV LD_LIBRARY_PATH /usr/local/cuda/extras/CUPTI/lib64:/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+# ENV LD_LIBRARY_PATH /usr/local/cuda/extras/CUPTI/lib64:/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
 # TensorFlow
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-        libnvinfer${LIBNVINFER_MAJOR}=${LIBNVINFER}+cuda${CUDA} \
-        libnvinfer-plugin${LIBNVINFER_MAJOR}=${LIBNVINFER}+cuda${CUDA} && \
-    ln -s /usr/local/cuda/lib64/stubs/libcuda.so /usr/local/cuda/lib64/stubs/libcuda.so.1 && \
-    echo /usr/local/cuda/lib64/stubs > /etc/ld.so.conf.d/z-cuda-stubs.conf && ldconfig && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+# RUN apt-get update && \
+#     apt-get install -y --no-install-recommends \
+#         libnvinfer${LIBNVINFER_MAJOR}=${LIBNVINFER}+cuda${CUDA} \
+#         libnvinfer-plugin${LIBNVINFER_MAJOR}=${LIBNVINFER}+cuda${CUDA} && \
+#     ln -s /usr/local/cuda/lib64/stubs/libcuda.so /usr/local/cuda/lib64/stubs/libcuda.so.1 && \
+#     echo /usr/local/cuda/lib64/stubs > /etc/ld.so.conf.d/z-cuda-stubs.conf && ldconfig && \
+#     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # NVIDIA CUDA Multi-stage build 
 RUN apt-get update && apt-get install -y --no-install-recommends \

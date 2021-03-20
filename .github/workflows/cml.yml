@@ -7,14 +7,15 @@ jobs:
     strategy: 
       matrix:
         env:
-          - {DOCKER_PULL: false, DOCKER_IMAGE: sampleimage, ROS_REPO: testing}
-          - {DOCKER_PULL: false, DOCKER_IMAGE: sampleimage, ROS_REPO: main}
+          # Use custom Docker image 
+          # TODO: Add UPSTREAM_WORKSPACE, DOCKER_PULL: true if public image, remove ROS_REPO? 
+          - {BUILDER: catkin_make, DOCKER_IMAGE: luniaria/perceptionworker}
 
     env:
       CCACHE_DIR: /github/home/.ccache
     
-    runs-on: [self-hosted, cml, gpu]
-
+    runs-on: [self-hosted, gpu]
+  
     steps: 
       - uses: actions/checkout@v2
         with: 

@@ -23,8 +23,6 @@
         <!-- Common parameters -->
         <arg name="initial_reset"         value="$(arg initial_reset)"/>
 
-    
-
         <!-- Camera info -->
         <arg name="device_type"           value="d455"/>
         <arg name="serial_no"             value="035722250180"/>
