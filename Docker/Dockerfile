@@ -28,6 +28,7 @@ RUN apt-get update && \
     locale-gen en_US.UTF-8 && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# Newest version of Git
 RUN sudo apt-get install -y software-properties-common \
     && sudo apt-get update \
     && sudo add-apt-repository -y ppa:git-core/ppa \
