@@ -24,6 +24,7 @@ RUN apt-get update && \
         gpg-agent \
         sudo \ 
         tzdata \
+        libomp-dev \
         locales && \
     locale-gen en_US.UTF-8 && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
