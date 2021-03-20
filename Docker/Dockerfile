@@ -35,6 +35,19 @@ RUN sudo apt-get install -y software-properties-common \
     && sudo apt-get update \
     && sudo apt-get install -y git
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 # NVIDIA CUDA Multi-stage build 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     nvidia-cuda-toolkit && \
@@ -89,6 +102,17 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libcudnn8=$CUDNN_VERSION-1+cuda11.2 \
     && apt-mark hold libcudnn8 && \
     rm -rf /var/lib/apt/lists/*
+
+
+
+
+
+
+
+
+
+
+
 
 # GitHub Runner
 ENV RUNNER_PATH=/home/runner
