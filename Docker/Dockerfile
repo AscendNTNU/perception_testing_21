@@ -79,7 +79,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libnccl2=$NCCL_VERSION-1+cuda11.2 \
     && rm -rf /var/lib/apt/lists/*
 
-# apt from auto upgrading the cublas package. See https://gitlab.com/nvidia/container-images/cuda/-/issues/88
+# APT from auto upgrading the cublas package. See https://gitlab.com/nvidia/container-images/cuda/-/issues/88
 RUN apt-mark hold libcublas-11-2 libnccl2
 
 
