@@ -9,7 +9,7 @@ jobs:
         env:
           # Use custom Docker image 
           # TODO: Add UPSTREAM_WORKSPACE, DOCKER_PULL: true if public image, remove ROS_REPO? 
-          - {BUILDER: catkin_make, DOCKER_IMAGE: luniaria/perceptionworker}
+          - {BUILDER: catkin_make, DOCKER_IMAGE: luniaria/perceptionrunner}
 
     env:
       CCACHE_DIR: /github/home/.ccache
