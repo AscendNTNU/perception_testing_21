@@ -36,13 +36,13 @@ RUN sudo apt-get install -y software-properties-common \
     && sudo apt-get install -y git
 
 # cuDNN
-ARG CUDA
-ARG CUDNN=8.1.0
-ARG CUDNN_MAJOR=8
-ARG LIBNVINFER=6.0.1-1
-ARG LIBNVINFER_MAJOR=6
-ARG CUBLAS=10.2.1.243-1
-ARG CUBLAS_MAJOR=10
+# ARG CUDA
+# ARG CUDNN=8.1.0
+# ARG CUDNN_MAJOR=8
+# ARG LIBNVINFER=6.0.1-1
+# ARG LIBNVINFER_MAJOR=6
+# ARG CUBLAS=10.2.1.243-1
+# ARG CUBLAS_MAJOR=10
 
 # SHELL ["/bin/bash", "-c"]
 
