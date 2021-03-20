@@ -7,8 +7,8 @@ jobs:
     strategy: 
       matrix:
         env:
-          - {DOCKER_PULL: false, DOCKER_IMAGE: ~, ROS_REPO: testing}
-          - {DOCKER_PULL: false, DOCKER_IMAGE: ~, ROS_REPO: main}
+          - {DOCKER_PULL: false, DOCKER_IMAGE: sampleimage, ROS_REPO: testing}
+          - {DOCKER_PULL: false, DOCKER_IMAGE: sampleimage, ROS_REPO: main}
 
     env:
       CCACHE_DIR: /github/home/.ccache

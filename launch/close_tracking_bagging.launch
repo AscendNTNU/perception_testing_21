@@ -3,7 +3,7 @@
 
 	<include file="$(dirname)/realsense.launch"/>
 
-    <include file="$(find object_detector)/launch/object_detector.launch"/>
+    <!--include file="$(find object_detector)/launch/object_detector.launch"/-->
 
     <node ns="hokuyo" pkg="urg_node" type="urg_node" name="hukoyo">
         <param name="ip_address" value="192.168.0.10"/>
@@ -11,7 +11,7 @@
         <param name="publish_multiecho" value="false"/>
     </node>
 
-    <node pkg="rosbag" type="record" name="rosbag_record_diag" args="record -o -a"/> 
+    <node pkg="rosbag" type="record" name="rosbag_record_diag" args="record -O test -a -x &quot;(.*)theora(.*)|(.*)compressed(.*)&quot;"/> 
 
     <node pkg="ros_vrpn_client" type="vrpn_client_node" name="vrpn_client_node" output="screen">
         <rosparam subst_value="true">
