@@ -8,7 +8,7 @@ jobs:
       matrix:
         env:
           # Use custom public Docker image 
-          # TODO: Add UPSTREAM_WORKSPACE, DOCKER_PULL: true if public image, remove ROS_REPO? 
+          # TODO: Add UPSTREAM_WORKSPACE or DOWNSTREAM_WORKSPACE, DOCKER_PULL: true if public image, remove ROS_REPO? 
           - {BUILDER: catkin_make, CMAKE_ARGS: -DENABLE_CUDA=ON, DOCKER_IMAGE: luniaria/perceptionworker, DOCKER_RUN_OPTS: --gpus all}
 
     env:
