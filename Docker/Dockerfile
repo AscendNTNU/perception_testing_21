@@ -11,7 +11,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Set up environment 
 RUN apt-get update && \
-    apt-get install --no-install-recommends --fix-missing \
+    apt-get install -y --no-install-recommends --fix-missing \
         build-essential \
         apt-utils \
         apt-transport-https \
@@ -28,29 +28,15 @@ RUN apt-get update && \
     locale-gen en_US.UTF-8 && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Newest version of Git
-RUN sudo apt-get install -y software-properties-common \
-    && sudo apt-get update \
-    && sudo add-apt-repository -y ppa:git-core/ppa \
-    && sudo apt-get update \
-    && sudo apt-get install -y git
+# # Newest version of Git
+# RUN sudo apt-get install -y software-properties-common \
+#     && sudo apt-get update \
+#     && sudo add-apt-repository -y ppa:git-core/ppa \
+#     && sudo apt-get update \
+#     && sudo apt-get install -y git
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-# NVIDIA CUDA Multi-stage build 
+################################## NVIDIA Docker base ##################################
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    nvidia-cuda-toolkit && \
     gnupg2 curl ca-certificates && \
     curl -fsSL https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub | apt-key add - && \
     echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64 /" > /etc/apt/sources.list.d/cuda.list && \
@@ -67,19 +53,20 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && ln -s cuda-11.2 /usr/local/cuda && \
     rm -rf /var/lib/apt/lists/*
 
-# Required for NVIDIA-Docker v1
+# Required for nvidia-docker v1
 RUN echo "/usr/local/nvidia/lib" >> /etc/ld.so.conf.d/nvidia.conf \
     && echo "/usr/local/nvidia/lib64" >> /etc/ld.so.conf.d/nvidia.conf
 
 ENV PATH /usr/local/nvidia/bin:/usr/local/cuda/bin:${PATH}
 ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
 
-# NVIDIA-container-runtime
+# nvidia-container-runtime
 ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 ENV NVIDIA_REQUIRE_CUDA "cuda>=11.2 brand=tesla,driver>=418,driver<419 brand=tesla,driver>=440,driver<441 driver>=450,driver<451"
 
-# Runtime Docker
+
+################################## NVIDIA Docker runtime ##################################
 ENV NCCL_VERSION 2.8.4
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -95,22 +82,34 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN apt-mark hold libcublas-11-2 libnccl2
 
 
-# cuDNN 
+################################## NVIDIA Docker devel ##################################
+ENV NCCL_VERSION 2.8.4
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    cuda-cudart-dev-11-2=11.2.152-1 \
+    cuda-command-line-tools-11-2=11.2.2-1 \
+    cuda-minimal-build-11-2=11.2.2-1 \
+    cuda-libraries-dev-11-2=11.2.2-1 \
+    cuda-nvml-dev-11-2=11.2.152-1 \
+    libnpp-dev-11-2=11.3.2.152-1 \
+    libnccl-dev=2.8.4-1+cuda11.2 \
+    libcublas-dev-11-2=11.4.1.1043-1 \
+    libcusparse-dev-11-2=11.4.1.1152-1 \
+    && rm -rf /var/lib/apt/lists/*
+
+# apt from auto upgrading the cublas package. See https://gitlab.com/nvidia/container-images/cuda/-/issues/88
+RUN apt-mark hold libcublas-dev-11-2 libnccl-dev
+ENV LIBRARY_PATH /usr/local/cuda/lib64/stubs
+
+
+################################## NVIDIA Docker devel cuDNN ##################################
 ENV CUDNN_VERSION 8.1.1.33
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libcudnn8=$CUDNN_VERSION-1+cuda11.2 \
+    libcudnn8-dev=$CUDNN_VERSION-1+cuda11.2 \
     && apt-mark hold libcudnn8 && \
     rm -rf /var/lib/apt/lists/*
-
-
-
-
-
-
-
-
-
 
 
 
