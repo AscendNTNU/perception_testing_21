@@ -20,7 +20,6 @@ RUN apt-get update && \
         pkg-config \
         curl \
         wget \
-        git \
         unzip \
         gpg-agent \
         sudo \ 
@@ -28,6 +27,12 @@ RUN apt-get update && \
         locales && \
     locale-gen en_US.UTF-8 && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN sudo apt-get install -y software-properties-common \
+    && sudo apt-get update \
+    && sudo add-apt-repository -y ppa:git-core/ppa \
+    && sudo apt-get update \
+    && sudo apt-get install -y git
 
 # cuDNN
 ARG CUDA
